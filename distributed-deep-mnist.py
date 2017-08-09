@@ -118,13 +118,13 @@ if __name__ == "__main__":
   parser.add_argument(
       "--ps_hosts",
       type=str,
-      default="",
+      default="master:2222",
       help="Comma-separated list of hostname:port pairs"
   )
   parser.add_argument(
       "--worker_hosts",
       type=str,
-      default="",
+      default="b25:2222,b26:2222,b27:2222,b28:2222",
       help="Comma-separated list of hostname:port pairs"
   )
   parser.add_argument(
@@ -144,12 +144,12 @@ if __name__ == "__main__":
   parser.add_argument(
       "--data_dir",
       type=str,
-      default="/tmp/mnist_data",
+      default="/lustre/testers/francesco/tensorflow/mnist/input_data",
       help="Directory for storing input data")
   parser.add_argument(
       "--log_dir",
       type=str,
-      default="/tmp/train_logs",
+      default="/lustre/testers/francesco/tensorflow/mnist/logs",
       help="Directory for train logs")
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)

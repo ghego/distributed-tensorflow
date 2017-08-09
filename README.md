@@ -42,5 +42,14 @@ Training starts after three commands are executed. MNIST dataset is downloaded t
 
 Execution method is not much different from that on a single machine, but there are the following changes.
 
-* Change localhost to another Hostname or IP address.
+* Default ps and workers are set to master, b25, b26, b27, b28
+
+```
+master# python <FILENAME> --job_name=ps --task_index=0
+b25# python <FILENAME> --job_name=worker --task_index=0
+b26# python <FILENAME> --job_name=worker --task_index=1
+b27# python <FILENAME> --job_name=worker --task_index=2
+b28# python <FILENAME> --job_name=worker --task_index=3
+```
+
 * `--log_dir` must specify a shared directory accessible to all hosts making up the cluster.
