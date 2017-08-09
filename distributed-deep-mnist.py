@@ -118,7 +118,7 @@ if __name__ == "__main__":
   parser.add_argument(
       "--ps_hosts",
       type=str,
-      default="master:2222",
+      default="b17:2222",
       help="Comma-separated list of hostname:port pairs"
   )
   parser.add_argument(

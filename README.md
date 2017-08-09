@@ -31,9 +31,9 @@ To quickly try distributed TensorFlow, run the following commands on a single ma
 Example of execution with one parameter server and two worker servers.
 
 ```
-Terminal1# python <FILENAME> --ps_hosts=localhost:2222 --worker_hosts=localhost:2223,localhost:2224 --job_name=ps --task_index=0
-Terminal2# python <FILENAME> --ps_hosts=localhost:2222 --worker_hosts=localhost:2223,localhost:2224 --job_name=worker --task_index=0
-Terminal3# python <FILENAME> --ps_hosts=localhost:2222 --worker_hosts=localhost:2223,localhost:2224 --job_name=worker --task_index=1
+Terminal1# python distributed-deep-mnist.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223,localhost:2224 --job_name=ps --task_index=0
+Terminal2# python distributed-deep-mnist.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223,localhost:2224 --job_name=worker --task_index=0
+Terminal3# python distributed-deep-mnist.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223,localhost:2224 --job_name=worker --task_index=1
 ```
 
 Training starts after three commands are executed. MNIST dataset is downloaded to `/tmp/data_mnist` directory and trained model is saved in  `/tmp/train_logs` directory. These directories can be changed with the `--data_dir` option and `--log_dir` option respectively.
@@ -42,14 +42,14 @@ Training starts after three commands are executed. MNIST dataset is downloaded t
 
 Execution method is not much different from that on a single machine, but there are the following changes.
 
-* Default ps and workers are set to master, b25, b26, b27, b28
+* Default ps and workers are set to b17, b25, b26, b27, b28
 
 ```
-master# python <FILENAME> --job_name=ps --task_index=0
-b25# python <FILENAME> --job_name=worker --task_index=0
-b26# python <FILENAME> --job_name=worker --task_index=1
-b27# python <FILENAME> --job_name=worker --task_index=2
-b28# python <FILENAME> --job_name=worker --task_index=3
+b17# python distributed-deep-mnist.py --job_name=ps --task_index=0
+b25# python distributed-deep-mnist.py --job_name=worker --task_index=0
+b26# python distributed-deep-mnist.py --job_name=worker --task_index=1
+b27# python distributed-deep-mnist.py --job_name=worker --task_index=2
+b28# python distributed-deep-mnist.py --job_name=worker --task_index=3
 ```
 
 * `--log_dir` must specify a shared directory accessible to all hosts making up the cluster.
